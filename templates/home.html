@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {% block content %}
+
+<h1 class="page-title">Latest Updates</h1>
+
+{% for post in posts %}
+<article class="post-card">
+  <div class="post-header">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <div class="post-meta">
+      <span class="post-author">By {{ post.author }}</span>
+      <span class="post-date text-muted">{{ post.date_posted }}</span>
+    </div>
+  </div>
+  <div class="post-content">{{ post.content }}</div>
+</article>
+{% endfor %} {% endblock content %}
