@@ -7,8 +7,15 @@
   <div class="post-header">
     <h2 class="post-title">{{ post.title }}</h2>
     <div class="post-meta">
-      <span class="post-author">By {{ post.author }}</span>
-      <span class="post-date text-muted">{{ post.date_posted }}</span>
+      <div class="author-info">
+        <img
+          src="{{ post.profile_image }}"
+          alt="{{ post.author }}"
+          class="profile-img"
+        />
+        <span class="post-author">{{ post.author }}</span>
+      </div>
+      <span class="post-date">{{ post.date_posted }}</span>
     </div>
   </div>
   <div class="post-content">{{ post.content }}</div>

@@ -15,6 +15,7 @@ posts = [
         "title": "Dummy post",
         "content": "fast api framework",
         "date_posted": "Feb 1, 2026",
+        "profile_image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Tarun",
     },
     {
         "id": "2",
@@ -22,6 +23,15 @@ posts = [
         "title": "Another dummy post",
         "content": "fast api framework",
         "date_posted": "Feb 2, 2026",
+        "profile_image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Divya",
+    },
+    {
+        "id": "3",
+        "author": "Kiaan Tehri",
+        "title": "Yet another post",
+        "content": "Best post yet",
+        "date_posted": "Feb 5,2026",
+        "profile_image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kiaan",
     },
 ]
 

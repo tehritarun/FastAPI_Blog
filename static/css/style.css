@@ -123,6 +123,21 @@ footer {
   line-height: 1.2;
 }
 
+.author-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  background: var(--bg-dark);
+}
+
 .post-meta {
   display: flex;
   flex-direction: column;

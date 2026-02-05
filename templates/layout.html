@@ -20,10 +20,9 @@
   </head>
   <body>
     <nav class="navbar">
-      <a href="/" class="nav-logo">FastAPI Blog</a>
+      <a href="{{ url_for("home") }}" class="nav-logo">FastAPI Blog</a>
       <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/api/posts">API</a>
+      <a href="{{ url_for("home") }}">Home</a>
       </div>
     </nav>
 
