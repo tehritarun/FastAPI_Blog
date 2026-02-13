@@ -43,6 +43,19 @@ def home(request: Request):
     )
 
 
+@app.get("/posts/{post_id}", include_in_schema=False)
+def post_page(request: Request, post_id: int):
+    for post in posts:
+        if post.get("id") == post_id:
+            title = post.get("title")[:10]
+            return templates.TemplateResponse(
+                request=request,
+                name="post.html",
+                context={"post": post, "title": title},
+            )
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Post Not Found")
+
+
 # API Routes
 @app.get("/api/posts")
 def get_posts():
