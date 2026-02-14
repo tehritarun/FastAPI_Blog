@@ -111,7 +111,7 @@ def validation_exception_handler(request: Request, exception: RequestValidationE
         context={
             "status_code": status.HTTP_422_UNPROCESSABLE_CONTENT,
             "title": status.HTTP_422_UNPROCESSABLE_CONTENT,
-            "details": exception.errors(),
+            "details": "Invalid request. Please check your request and try again..",
         },
         status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
     )

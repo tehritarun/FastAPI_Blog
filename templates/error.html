@@ -43,7 +43,8 @@
             </circle>
           </svg>
         </div>
-        <h1 class="error-title">{{ details }}</h1>
+        <h1 class="error-title">Oops.. {{ status_code }} Error</h1>
+<p class="error-text">{{ details }}</p>
         <div class="error-actions">
           <a href="{{ url_for("home") }}" class="btn btn-primary">Back to Home</a>
         </div>
