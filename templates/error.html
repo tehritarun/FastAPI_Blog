@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main class="container error-container">
+      <div class="error-wrapper">
+        <div class="error-svg">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              fill="#6366f1"
+              d="M44.7,-76.4C58.1,-69.2,70.1,-59.1,79.6,-46.5C89.1,-33.9,96.1,-18.8,96.5,-3.6C96.9,11.6,90.6,26.8,81.1,39.6C71.6,52.4,58.9,62.8,44.9,71.1C30.9,79.4,15.5,85.6,0.1,85.5C-15.3,85.3,-30.5,78.8,-44.6,70.4C-58.7,62.1,-71.6,51.8,-80.4,38.9C-89.2,26.1,-93.8,10.6,-92,-4.5C-90.2,-19.6,-82,-34.3,-71.4,-46.4C-60.8,-58.5,-47.8,-68.1,-33.9,-75.1C-20,-82.1,-9,-86.5,3,-91.7C15,-96.9,29.9,-102.9,44.7,-101.4C59.5,-99.9,74.2,-90.9,44.7,-76.4Z"
+              transform="translate(100 100)"
+              opacity="0.1"
+            />
+            <text
+              x="50%"
+              y="50%"
+              dominant-baseline="middle"
+              text-anchor="middle"
+              font-family="Outfit"
+              font-size="60"
+              font-weight="700"
+              fill="white"
+            >
+						{{ status_code }}
+            </text>
+            <circle
+              cx="100"
+              cy="100"
+              r="80"
+              stroke="#6366f1"
+              stroke-width="2"
+              fill="none"
+              stroke-dasharray="10 5"
+              opacity="0.4"
+            >
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0 100 100"
+                to="360 100 100"
+                dur="20s"
+                repeatCount="indefinite"
+              />
+            </circle>
+          </svg>
+        </div>
+        <h1 class="error-title">{{ details }}</h1>
+        <div class="error-actions">
+          <a href="{{ url_for("home") }}" class="btn btn-primary">Back to Home</a>
+        </div>
+      </div>
+    </main>
+{% endblock content %}
+{% block script %}
+{% endblock script %}
+
+

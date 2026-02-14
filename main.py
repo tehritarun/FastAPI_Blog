@@ -1,6 +1,9 @@
 from fastapi import FastAPI, HTTPException, Request, status
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 app = FastAPI()
 
@@ -68,3 +71,47 @@ def get_posts(post_id: int):
         if post.get("id") == post_id:
             return post
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Post Not Found")
+
+
+@app.exception_handler(StarletteHTTPException)
+def general_exception_handler(request: Request, exception: StarletteHTTPException):
+    message = (
+        exception.detail or "An error occured. Please check your request and try again."
+    )
+
+    if request.url.path.startswith("/api"):
+        return JSONResponse(
+            status_code=exception.status_code,
+            content={"details": message},
+        )
+
+    return templates.TemplateResponse(
+        request=request,
+        name="error.html",
+        context={
+            "status_code": exception.status_code,
+            "title": exception.status_code,
+            "details": message,
+        },
+        status_code=exception.status_code,
+    )
+
+
+@app.exception_handler(RequestValidationError)
+def validation_exception_handler(request: Request, exception: RequestValidationError):
+    if request.url.path.startswith("/api"):
+        return JSONResponse(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+            content={"details": exception.errors()},
+        )
+
+    return templates.TemplateResponse(
+        request=request,
+        name="error.html",
+        context={
+            "status_code": status.HTTP_422_UNPROCESSABLE_CONTENT,
+            "title": status.HTTP_422_UNPROCESSABLE_CONTENT,
+            "details": exception.errors(),
+        },
+        status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+    )
